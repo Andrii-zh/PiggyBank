@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy bank</title>
+        <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="overlay" id="welcomeOverlay">
+        <div class="welcome-modal">
+            <img src="pig3.png" alt="Маскот Piggy Bank" id="mascot-img">
+            <p>Хрю, я ваш персональний асистент, що проведе вас у світ фінансової грамотності, на цьому сайті ви можете слідкувати за вашими витратами та прибутками та вчитись правильно розподіляти бюджет, якщо потрібна буде моя порада - натисніть на мене).</p>
+            <button onclick="closeModal()">Приступити до роботи</button>
+        </div>
+    </div>
+    <div id="notification" class="notification">
+        <img src="pig2.png" alt="Злий маскот">
+        <p>У цей період твої витрати перевищують прибутки,<br> 
+            надалі старайся краще слідкувати за своїми фінанасами( </p>
+        <button onclick="closeNotification()">ОК</button>
+    </div>
+    <header>
+        <div class="logo-title">
+            <img src="logo.png" alt="Open Recommendation" id="recommendation-btn">
+            <h1>Piggy bank</h1>
+        </div>
+        <p>Багатий не той, хто багато заробляє, а той, хто правильно витрачає.</p>
+    </header>
+    <div id="recommendation-modal" class="modal">
+        <div class="modal-content">
+            <h2>Фінансова рекомендація від асистента</h2>
+            <img src="pig1.png" alt="Pig Mascot" id="mascot-rec">
+            <p id="random-recommendation"></p>
+            <button onclick="closeModal2()">OK</button>
+        </div>
+    </div>
+        <section class="entry-form">
+        <label for="type">Виберіть тип:</label>
+        <select id="type" onchange="toggleExpenseType()">
+            <option value="income">Надходження</option>
+            <option value="expense">Витрати</option>
+        </select>
+    
+        <div id="expense-type-div" style="display: none;">
+            <label for="expense-type">Тип витрат:</label>
+            <select id="expense-type">
+                <option value="Їжа">Їжа</option>
+                <option value="Одяг">Одяг</option>
+                <option value="Транспорт">Транспорт</option>
+                <option value="Товари">Товари</option>
+                <option value="Медикаменти">Медикаменти</option>
+                <option value="Перекази">Перекази</option>
+                <option value="Інше">Інше</option>
+            </select>
+        </div>
+    
+        <label for="date">Дата:</label>
+        <input type="date" id="date" required>
+    
+        <label for="amount">Сума:</label>
+        <input type="number" id="amount" required>
+    
+        <button onclick="addEntry()">Додати</button>
+    </section>
+    <section class="data-display">
+        <button onclick="toggleEntries()">Показати записи</button>
+    <section class="entries" id="entriesSection" style="display: none;">
+        <h2>Ваші записи:</h2>
+        <ul id="entries"></ul>
+    </section>
+        <label for="month-filter">Показати дані за:</label>
+        <select id="month-filter">
+            <option value="all-time">За весь час</option>
+            <option value="january">Січень</option>
+            <option value="february">Лютий</option>
+            <option value="march">Березень</option>
+            <option value="april">Квітень</option>
+            <option value="may">Травень</option>
+            <option value="june">Червень</option>
+            <option value="july">Липень</option>
+            <option value="august">Серпень</option>
+            <option value="september">Вересень</option>
+            <option value="october">Жовтень</option>
+            <option value="november">Листопад</option>
+            <option value="december">Грудень</option>
+        </select>
+        </section>
+    <section class="data-display">
+        <h2>Ваші записи:</h2>
+        <ul id="entries"></ul>
+        <button onclick="generateChart()">Показати діаграму</button>
+        <div class="chart-container">
+            <canvas id="myChart" width="100" height="100"></canvas>
+        </div>
+        <button onclick="clearData()">Очистити збережені дані</button>
+        
+</section>
+    </section>
+    <script src="js.js"></script>
+</body>
+</html>
